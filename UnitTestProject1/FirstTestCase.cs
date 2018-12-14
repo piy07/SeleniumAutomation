@@ -10,11 +10,12 @@ namespace UnitTestProject1
     [TestClass]
     public class FirstTestCase
     {
+        IWebDriver driver;
 
         [TestMethod]
         public void TestMethod1()
         {
-            IWebDriver driver = new ChromeDriver();
+            driver = new ChromeDriver();
 
             driver.Manage().Window.Maximize();
             driver.Navigate().GoToUrl("https://www.wikipedia.org/");
