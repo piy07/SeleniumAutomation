@@ -4,23 +4,24 @@ using System.Collections.ObjectModel;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Firefox;
 
 namespace UnitTestProject1
 {
     [TestClass]
     public class FirstTestCase
     {
-        IWebDriver driver;
+        IWebDriver driverch;
 
         [TestMethod]
         public void TestMethod1()
         {
-            driver = new ChromeDriver();
+            driverch = new FirefoxDriver();//ChromeDriver();
 
-            driver.Manage().Window.Maximize();
-            driver.Navigate().GoToUrl("https://www.wikipedia.org/");
+            driverch.Manage().Window.Maximize();
+            driverch.Navigate().GoToUrl("https://www.wikipedia.org/");
             List<String> textofanchors = new List<string>();
-            ReadOnlyCollection<IWebElement> anchorList = driver.FindElements(By.TagName("a"));
+            ReadOnlyCollection<IWebElement> anchorList = driverch.FindElements(By.TagName("a"));
             foreach(IWebElement anchor in anchorList)
             {
                     if(anchor.Text.Length>0)
@@ -38,7 +39,7 @@ namespace UnitTestProject1
             //driver.FindElement(By.ClassName("svg-search-icon")).Click();
             //string abc = driver.FindElement(By.Id("firstHeading")).Text.ToString();
 
-            driver.Close();
+            driverch.Close();
             //driver.Quit();
         }
     }
